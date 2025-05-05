@@ -54,6 +54,7 @@ group :development, :test do
 
   gem "faker"
   gem "rspec-rails", "~> 8.0.0"
+  gem "factory_bot"
 end
 
 group :development do
@@ -67,5 +68,5 @@ group :test do
   gem "selenium-webdriver"
   gem "simplecov", require: false, group: :test
   gem "database_cleaner-active_record"
-  gem 'shoulda-matchers', "~> 6.0"
+  gem "shoulda-matchers", "~> 6.0"
 end
