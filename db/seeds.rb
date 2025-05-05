@@ -23,41 +23,62 @@ puts 'Cleaning database...'
 #   puts "Created user: #{user.email_address}"
 # end
 
-# users = User.all
-# puts 'Creating tasks...'
-# users.each do |user|
-#   rand(100..1000).times do |i|
-#     task = user.tasks.create!(
-#       title: "Task #{i} for #{user.name}",
-#       priority: Task.priorities.keys.sample
-#     )
+users = User.all.sample(1)
+puts 'Creating tasks...'
+users.each do |user|
+  rand(100..1000).times do |i|
+    task = user.tasks.create!(
+      title: "Task #{i} for #{user.name}",
+      priority: Task.priorities.keys.sample
+    )
+    print('T')
+    rand(1..3).times do
+      task.comments.create!(
+        body: Faker::Lorem.sentence(word_count: 5),
+        user_id: task.user_id
+      )
+    end
+    print 'TC'
+  end
 
-#     puts "Created task: #{task.title} for user: #{user.email_address}"
-#   end
+  rand(50..300).times do |i|
+    task = user.tasks.create!(
+      title: "Task #{i} for #{user.name}",
+      priority: Task.priorities.keys.sample,
+      done: true,
+      done_at: Time.current + rand(1..10).days
+    )
 
-#   rand(50..300).times do |i|
-#     task = user.tasks.create!(
-#       title: "Task #{i} for #{user.name}",
-#       priority: Task.priorities.keys.sample,
-#       done: true,
-#       done_at: Time.current + rand(1..10).days
-#     )
+    rand(1..3).times do
+      task.comments.create!(
+        body: Faker::Lorem.sentence(word_count: 5),
+        user_id: task.user_id
+      )
+    end
+    print 'TC'
+  end
+end
 
-#     puts "Created task: #{task.title} for user: #{user.email_address}"
-#   end
-# end
-
-tasks = Task.all
+tasks = Task.all.sample(300)
 puts 'Creating task time logs...'
 tasks.each do |task|
   rand(1..10).times do |i|
-    task.time_logs.create!(
+    time_log = task.time_logs.create!(
       recorded_at: Time.current - rand(1..10).days,
       duration_in_minutes: rand(40..200),
       user_id: task.user_id
     )
+
+    rand(1..3).times do
+      time_log.comments.create!(
+        body: Faker::Lorem.sentence(word_count: 5),
+        user_id: task.user_id
+      )
+    end
+    print 'TL'
   end
 end
 
-puts "Stats: #{User.count} users, #{Task.count} tasks, #{TaskTimeLog.count} task time logs"
+puts ''
+puts "Stats: #{User.count} users, #{Task.count} tasks, #{TimeLog.count} task time logs"
 puts 'Done!'
