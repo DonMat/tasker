@@ -3,7 +3,7 @@ class TasksController < ApplicationController
 
   # GET /tasks or /tasks.json
   def index
-    @tasks = Task.all.includes(:user)
+    @tasks = Task.all.includes(:user).limit(10)
   end
 
   # GET /tasks/1 or /tasks/1.json

@@ -1,5 +1,6 @@
 class Task < ApplicationRecord
   belongs_to :user
+  has_many :time_logs, dependent: :destroy
 
   enum :priority, {
     low: "low",
