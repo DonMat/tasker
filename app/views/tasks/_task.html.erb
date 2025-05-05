@@ -1,0 +1,26 @@
+<div id="<%= dom_id task %>" class="w-full sm:w-auto my-5 space-y-5">
+  <div class="block">
+    <strong class=" font-medium mb-1">Title:</strong>
+    <%= task.title %>
+  </div>
+
+  <div class="block">
+    <strong class="font-medium mb-1">Priority:</strong>
+    <%= task.priority %>
+  </div>
+  <div class="block">
+    <strong class="font-medium mb-1">User:</strong>
+    <%= task.user.name %>
+  </div>
+
+  <% if task.done? %>
+    <div class="block">
+      <strong class="font-medium mb-1">Done at:</strong>
+      <%= task.done_at %>
+    </div>
+  <% else %>
+    <div class="block">
+      <strong class="font-medium mb-1">Status: undone</strong>
+    </div>
+  <% end %>
+</div>
