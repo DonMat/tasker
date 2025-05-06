@@ -73,6 +73,7 @@ group :test do
 end
 
 gem "grape", "~> 2.3"
-gem "grape-swagger-rails"
 gem "grape-entity"
 gem "grape_logging"
+gem "grape-swagger", "~> 2.1"
+gem "rack-cors"
