@@ -9,26 +9,27 @@
 #   end
 
 puts 'Cleaning database...'
-# User.destroy_all
+User.destroy_all
 
 
-# puts 'Creating users...'
-# (1..10).each do |i|
-#   user = User.create!(
-#     email_address: "user_#{i}@example.com",
-#     password: 'password',
-#     name: Faker::Name.name
-#   )
+puts 'Creating users...'
+(1..10).each do |i|
+  user = User.create!(
+    email_address: "user_#{i}@example.com",
+    password: 'password',
+    name: Faker::Name.name
+  )
 
-#   puts "Created user: #{user.email_address}"
+  puts "Created user: #{user.email_address}"
 # end
 
-users = User.all.sample(1)
+users = User.all
 puts 'Creating tasks...'
+Task.destroy_all
 users.each do |user|
-  rand(100..1000).times do |i|
+  rand(100..500).times do |i|
     task = user.tasks.create!(
-      title: "Task #{i} for #{user.name}",
+      title: "Task #{i + 1} for #{user.name}",
       priority: Task.priorities.keys.sample
     )
     print('T')
@@ -43,7 +44,7 @@ users.each do |user|
 
   rand(50..300).times do |i|
     task = user.tasks.create!(
-      title: "Task #{i} for #{user.name}",
+      title: "Task #{i + 1} for #{user.name}",
       priority: Task.priorities.keys.sample,
       done: true,
       done_at: Time.current + rand(1..10).days
