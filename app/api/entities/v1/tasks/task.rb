@@ -9,7 +9,7 @@
           expose :priority, documentation: { type: "String", desc: "Priority of the task" }
           expose :created_at, documentation: { type: "DateTime", desc: "Task creation timestamp" }
           expose :updated_at, documentation: { type: "DateTime", desc: "Task last update timestamp" }
-          expose :time_logs, using: Entities::V1::TimeLogs::TimeLog, documentation: { type: "Array", desc: "Time logs of the task" }
+          expose :time_logs, using: Entities::V1::TimeLogs::TimeLog, if: { include_time_logs: true }, documentation: { type: "Array", desc: "Time logs of the task" }
         end
       end
     end
