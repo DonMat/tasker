@@ -75,3 +75,4 @@ end
 gem "grape", "~> 2.3"
 gem "grape-swagger-rails"
 gem "grape-entity"
+gem "grape_logging"
