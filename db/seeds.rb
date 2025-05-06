@@ -21,7 +21,7 @@ puts 'Creating users...'
   )
 
   puts "Created user: #{user.email_address}"
-# end
+end
 
 users = User.all
 puts 'Creating tasks...'
