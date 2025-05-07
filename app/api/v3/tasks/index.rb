@@ -1,4 +1,4 @@
-module V1
+module V3
   module Tasks
     class Index < Grape::API
       desc "Get all tasks"
@@ -10,7 +10,7 @@ module V1
       end
 
       get do
-        tasks = Task.all # where(user_id: current_user.id) # For testing and benchmarking purposes
+        tasks = Task.all # For testing and benchmarking purposes
 
         if params[:priority].present?
           tasks = tasks.where(priority: params[:priority])
@@ -21,7 +21,10 @@ module V1
         end
 
         # tasks = tasks.page(params[:page]).per(params[:per_page])
-        present tasks, with: Entities::V1::Tasks::Task
+        ActiveModelSerializers::SerializableResource.new(
+          tasks,
+          each_serializer: TaskSerializer
+        ).as_json
       end
     end
   end

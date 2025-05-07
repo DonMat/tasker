@@ -1,4 +1,5 @@
 class TasksController < ApplicationController
+  allow_unauthenticated_access
   before_action :set_task, only: %i[ edit update destroy ]
 
   # GET /tasks or /tasks.json
@@ -29,7 +30,8 @@ class TasksController < ApplicationController
 
   # POST /tasks or /tasks.json
   def create
-    @task = Current.user.tasks.new(task_params)
+    @task = Task.new(task_params)
+    @task.user_id = User.first.id # For testing and benchmarking purposes
 
     respond_to do |format|
       if @task.save

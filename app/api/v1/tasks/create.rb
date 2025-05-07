@@ -11,7 +11,7 @@ module V1
 
       post do
         task = Task.new(declared(params))
-        task.user_id = current_user.id
+        task.user_id = User.first.id # For testing and benchmarking purposes
 
         if task.save
           status 201

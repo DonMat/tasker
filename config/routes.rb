@@ -7,5 +7,9 @@ Rails.application.routes.draw do
   resources :passwords, param: :token
   resources :tasks
 
+  namespace :v2 do
+    resources :tasks, only: [ :index, :show, :create ]
+  end
+
   mount API => "/"
 end

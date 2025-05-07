@@ -1,10 +1,10 @@
 class API < Grape::API
-  version "v1", "v2", using: :path
+  version "v1", "v2", "v3", using: :path
 
-  logger.formatter = GrapeLogging::Formatters::Default.new
-  use GrapeLogging::Middleware::RequestLogger, logger: logger, include: [
-    GrapeLogging::Loggers::FilterParameters.new
-  ]
+  # logger.formatter = GrapeLogging::Formatters::Default.new
+  # use GrapeLogging::Middleware::RequestLogger, logger: logger, include: [
+  #   GrapeLogging::Loggers::FilterParameters.new
+  # ]
 
   format :json
   content_type :json, "application/json; charset=utf-8"
@@ -12,7 +12,7 @@ class API < Grape::API
 
   helpers do
     def current_user
-      @current_user ||= User.find(15) # find_by(id: params[:user_id])
+      @current_user ||= User.first # For testing and benchmarking purposes
     end
   end
 
@@ -22,12 +22,13 @@ class API < Grape::API
 
   mount V1::Base
   mount V2::Base
+  mount V3::Base
 
   add_swagger_documentation(
-    api_version: "v2",
+    api_version: "v3",
     info: {
       title: "Tasker API",
-      description: "V1 Documentation",
+      description: "V3 Documentation",
       contact: ""
     },
     security_definitions: {

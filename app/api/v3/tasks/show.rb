@@ -1,4 +1,4 @@
-module V1
+module V3
   module Tasks
     class Show < Grape::API
       desc "Get a specific task"
@@ -16,10 +16,23 @@ module V1
         task_query = task_query.includes(time_logs: :user) if include_time_logs
         task_query = task_query.includes(comments: :user) if include_comments
 
-        task = task_query.find_by(id: params[:id]) # .where(user_id: current_user.id).find_by(id: params[:id]) # For testing and benchmarking purposes
+        task = task_query.find_by(id: params[:id]) # .where(user_id: current_user.id).find_by(id: params[:id])
 
         if task
-          present task, with: Entities::V1::Tasks::Task, include_time_logs: include_time_logs, include_comments: include_comments
+          ActiveModelSerializers::SerializableResource.new(
+            task,
+            serializer: TaskSerializer,
+            include_time_logs: params[:include_time_logs],
+            include_comments: params[:include_comments],
+            include: {
+              time_logs: {
+                user: {}
+              },
+              comments: {
+                user: {}
+              }
+            }
+          ).as_json
         else
           status 404
           { error: "Task not found" }
