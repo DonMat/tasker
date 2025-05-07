@@ -4,4 +4,5 @@ class V2::Base < Grape::API
   prefix :api
 
   mount V2::Tasks::Base
+  mount V2::TimeLogs::Base
 end
