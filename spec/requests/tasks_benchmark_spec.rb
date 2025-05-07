@@ -183,6 +183,34 @@ RSpec.describe "Tasks", type: :request do
     end
   end
 
+  context "task creation performance" do
+    let!(:user) { create(:user) }
+    it "benchmarks creating a single task" do
+      run_benchmark("Benchmarking POST /tasks create with single task") do
+        post tasks_path(format: :json), params: { task: attributes_for(:task) }
+        expect(response).to be_successful
+      end
+    end
+
+    it "benchmarks creating 10 tasks" do
+      run_benchmark("Benchmarking POST /tasks create with 10 tasks") do
+        10.times do
+          post tasks_path(format: :json), params: { task: attributes_for(:task) }
+          expect(response).to be_successful
+        end
+      end
+    end
+
+    it "benchmarks creating 100 tasks" do
+      run_benchmark("Benchmarking POST /tasks create with 100 tasks") do
+        100.times do
+          post tasks_path(format: :json), params: { task: attributes_for(:task) }
+          expect(response).to be_successful
+        end
+      end
+    end
+  end
+
   private
 
   def calculate_std_dev(times, mean)
