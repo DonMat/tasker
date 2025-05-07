@@ -4,8 +4,8 @@ module V1
       desc "Get a specific task"
       params do
         requires :id, type: Integer, desc: "Task ID"
-        optional :include_time_logs, type: Boolean, default: false, desc: "Include time logs in the response"
-        optional :include_comments, type: Boolean, default: false, desc: "Include comments in the response"
+        optional :include_time_logs, type: Boolean, desc: "Include time logs in the response"
+        optional :include_comments, type: Boolean, desc: "Include comments in the response"
       end
 
       get ":id" do
