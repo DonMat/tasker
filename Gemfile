@@ -71,3 +71,9 @@ group :test do
   gem "database_cleaner-active_record"
   gem "shoulda-matchers", "~> 6.0"
 end
+
+gem "grape", "~> 2.3"
+gem "grape-entity"
+gem "grape_logging"
+gem "grape-swagger", "~> 2.1"
+gem "rack-cors"
