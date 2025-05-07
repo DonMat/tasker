@@ -1,14 +1,21 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: %i[ show edit update destroy ]
+  before_action :set_task, only: %i[ edit update destroy ]
 
   # GET /tasks or /tasks.json
   def index
-    @tasks = Task.all.includes(:user).limit(10)
+    @tasks = Task.all
   end
 
   # GET /tasks/1 or /tasks/1.json
   def show
     @include_time_logs = ActiveModel::Type::Boolean.new.cast(params[:include_time_logs])
+    @include_comments = ActiveModel::Type::Boolean.new.cast(params[:include_comments])
+
+    task_query = Task.all
+    task_query = task_query.includes(time_logs: :user) if @include_time_logs
+    task_query = task_query.includes(comments: :user) if @include_comments
+
+    @task = task_query.find(params[:id])
   end
 
   # GET /tasks/new

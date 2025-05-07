@@ -10,3 +10,9 @@ if local_assigns[:include_time_logs]
     json.partial! "time_logs/time_log", time_log: time_log
   end
 end
+
+if local_assigns[:include_comments]
+  json.comments task.comments do |comment|
+    json.partial! "comments/comment", comment: comment
+  end
+end
