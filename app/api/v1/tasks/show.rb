@@ -16,7 +16,7 @@ module V1
         task_query = task_query.includes(time_logs: :user) if include_time_logs
         task_query = task_query.includes(comments: :user) if include_comments
 
-        task = task_query.find_by(id: params[:id]) #.where(user_id: current_user.id).find_by(id: params[:id])
+        task = task_query.find_by(id: params[:id]) # .where(user_id: current_user.id).find_by(id: params[:id])
 
         if task
           present task, with: Entities::V1::Tasks::Task, include_time_logs: include_time_logs, include_comments: include_comments
