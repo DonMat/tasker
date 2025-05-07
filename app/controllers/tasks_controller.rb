@@ -8,6 +8,7 @@ class TasksController < ApplicationController
 
   # GET /tasks/1 or /tasks/1.json
   def show
+    @include_time_logs = ActiveModel::Type::Boolean.new.cast(params[:include_time_logs])
   end
 
   # GET /tasks/new
