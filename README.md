@@ -67,6 +67,12 @@ Grape + Active Model Serializers:
 | **POST /tasks (10 tasks)** | **74.88ms** | 86.13ms | 77.73ms | 80.44ms |
 | **POST /tasks (100 tasks)** | **756.12ms** | 968.70ms | 833.22ms | 809.31ms |
 
+See also files fith more statistics
+[GRAPE](https://github.com/DonMat/tasker/blob/main/test_results_grape.txt)
+[GRAPE + AMS](https://github.com/DonMat/tasker/blob/main/test_results_grape_ams.txt)
+[AMS](https://github.com/DonMat/tasker/blob/main/test_results_ams.txt)
+[JBuilder](https://github.com/DonMat/tasker/blob/main/test_results_jbuilder.txt)
+
 
 
 ## Overall Performance Analysis

@@ -1,0 +1,153 @@
+Benchmarking GET /tasks index with single task
+..........
+Results:
+  Average: 5.78 ms
+  Min: 2.54 ms
+  Max: 185.86 ms
+  Standard Deviation: 18.23 ms
+.
+Benchmarking GET /tasks/:id show with single task
+..........
+Results:
+  Average: 5.27 ms
+  Min: 3.55 ms
+  Max: 43.26 ms
+  Standard Deviation: 4.29 ms
+.
+Benchmarking GET /tasks index with 100 tasks
+..........
+Results:
+  Average: 25.79 ms
+  Min: 21.65 ms
+  Max: 35.77 ms
+  Standard Deviation: 3.09 ms
+.
+Benchmarking GET /tasks index with 100 tasks (with 5 time logs and 5 comments each)
+..........
+Results:
+  Average: 25.71 ms
+  Min: 21.77 ms
+  Max: 32.51 ms
+  Standard Deviation: 2.34 ms
+.
+Benchmarking GET /tasks/:id show with 10 time logs included
+..........
+Results:
+  Average: 17.68 ms
+  Min: 13.97 ms
+  Max: 41.69 ms
+  Standard Deviation: 3.96 ms
+.
+Benchmarking GET /tasks/:id show with 10 time logs (not included)
+..........
+Results:
+  Average: 4.86 ms
+  Min: 3.37 ms
+  Max: 8.64 ms
+  Standard Deviation: 0.95 ms
+.
+Benchmarking GET /tasks/:id show with 10 time logs (5 comments each) included
+..........
+Results:
+  Average: 16.89 ms
+  Min: 13.85 ms
+  Max: 22.81 ms
+  Standard Deviation: 1.92 ms
+.
+Benchmarking GET /tasks/:id show with 10 time logs (5 comments each) not included
+..........
+Results:
+  Average: 4.87 ms
+  Min: 3.62 ms
+  Max: 8.84 ms
+  Standard Deviation: 0.96 ms
+.
+Benchmarking GET /tasks/:id show with 10 comments included
+..........
+Results:
+  Average: 16.81 ms
+  Min: 14.11 ms
+  Max: 26.11 ms
+  Standard Deviation: 2.26 ms
+.
+Benchmarking GET /tasks/:id show with 10 comments (not included)
+..........
+Results:
+  Average: 4.81 ms
+  Min: 3.61 ms
+  Max: 7.75 ms
+  Standard Deviation: 0.86 ms
+.
+Benchmarking GET /tasks/:id show with 10 time logs and 10 comments included
+..........
+Results:
+  Average: 27.77 ms
+  Min: 23.21 ms
+  Max: 72.83 ms
+  Standard Deviation: 5.35 ms
+.
+Benchmarking GET /tasks/:id show with 10 time logs and 10 comments (not included)
+..........
+Results:
+  Average: 4.87 ms
+  Min: 3.51 ms
+  Max: 9.95 ms
+  Standard Deviation: 1.03 ms
+.
+Benchmarking GET /tasks/:id show with 100 time logs included
+..........
+Results:
+  Average: 94.46 ms
+  Min: 80.68 ms
+  Max: 113.21 ms
+  Standard Deviation: 7.03 ms
+.
+Benchmarking GET /tasks/:id show with 50 comments included
+..........
+Results:
+  Average: 50.0 ms
+  Min: 41.22 ms
+  Max: 105.12 ms
+  Standard Deviation: 10.47 ms
+.
+Benchmarking GET /tasks/:id show with 100 time logs and 50 comments included
+..........
+Results:
+  Average: 139.59 ms
+  Min: 124.21 ms
+  Max: 201.28 ms
+  Standard Deviation: 11.37 ms
+.
+Benchmarking GET /tasks/:id show with 100 time logs and 50 comments (not included)
+..........
+Results:
+  Average: 4.94 ms
+  Min: 3.49 ms
+  Max: 9.98 ms
+  Standard Deviation: 1.12 ms
+.
+Benchmarking POST /tasks create with single task
+..........
+Results:
+  Average: 9.11 ms
+  Min: 7.02 ms
+  Max: 17.7 ms
+  Standard Deviation: 1.66 ms
+.
+Benchmarking POST /tasks create with 10 tasks
+..........
+Results:
+  Average: 80.44 ms
+  Min: 72.32 ms
+  Max: 95.11 ms
+  Standard Deviation: 5.45 ms
+.
+Benchmarking POST /tasks create with 100 tasks
+..........
+Results:
+  Average: 809.31 ms
+  Min: 766.91 ms
+  Max: 926.19 ms
+  Standard Deviation: 31.36 ms
+.
+
